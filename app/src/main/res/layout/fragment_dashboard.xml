@@ -11,8 +11,6 @@
             app:tabSelectedTextColor="@color/dark_blue"
             android:background="#FFFFFF"
             android:elevation="4dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             app:tabIndicatorHeight="0dp"
             android:layout_height="wrap_content">
         <com.google.android.material.tabs.TabItem
@@ -43,10 +41,4 @@
             android:id="@+id/viewpager_dashboard"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
 </LinearLayout>

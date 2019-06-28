@@ -26,7 +26,6 @@ public class DashboardFragment extends Fragment implements TabLayout.OnTabSelect
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_dashboard, container, false);
-        ArrayList<RestaurantDetail> restaurantDetails = new ArrayList<>();
 
         tabLayout = rootView.findViewById(R.id.tab_layout_dashboard);
         viewPager = rootView.findViewById(R.id.viewpager_dashboard);
@@ -36,17 +35,6 @@ public class DashboardFragment extends Fragment implements TabLayout.OnTabSelect
 
         viewPager.setAdapter(dashboardFragmentAdapter);
         tabLayout.addOnTabSelectedListener(this);
-
-        restaurantDetails.add(new RestaurantDetail(R.drawable.restaurant_green_icon_27, "ABKD0",5,true,0.5,234));
-        restaurantDetails.add(new RestaurantDetail(R.drawable.restaurant_green_icon_27, "ABKD0",4,true,0.2,234));
-        restaurantDetails.add(new RestaurantDetail(R.drawable.restaurant_green_icon_27, "ABKD0",5,false,1.5,234));
-        restaurantDetails.add(new RestaurantDetail(R.drawable.restaurant_green_icon_27, "ABKD0",3,false,2.5,234));
-
-
-        RestaurantAdapter restaurantAdapter = new RestaurantAdapter(restaurantDetails, getContext());
-        RecyclerView recylerView = rootView.findViewById(R.id.recycle_view);
-        recylerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recylerView.setAdapter(restaurantAdapter);
 
         return rootView;
     }

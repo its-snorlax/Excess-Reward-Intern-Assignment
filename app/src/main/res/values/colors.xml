@@ -6,4 +6,6 @@
     <color name="blue">#59A3FF</color>
     <color name="tabSelected">#59A3FF</color>
     <color name="tabUnSelected">#5E5E5E</color>
+    <color name="green">#008000</color>
+    <color name="red">#FF0000</color>
 </resources>

@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+    <com.google.android.material.tabs.TabLayout
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            android:id="@+id/tab_layout_dashboard"
+            android:layout_width="match_parent"
+            app:tabSelectedTextColor="@color/dark_blue"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:tabIndicatorHeight="0dp"
+            android:layout_height="wrap_content">
+        <com.google.android.material.tabs.TabItem
+                android:text="Restaurant"
+                android:layout_marginEnd="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+                android:text="Cafe"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+                android:text="Bars"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <com.google.android.material.tabs.TabItem
+                android:text="Coffee &amp; Tea"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycle_view"

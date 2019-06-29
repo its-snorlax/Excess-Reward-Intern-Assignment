@@ -7,18 +7,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import com.example.newapp.R;
 import com.example.newapp.adapter.DashboardFragmentAdapter;
-import com.example.newapp.adapter.RestaurantAdapter;
-import com.example.newapp.model.RestaurantDetail;
 import com.google.android.material.tabs.TabLayout;
 
-import java.util.ArrayList;
-
-public class DashboardFragment extends Fragment implements TabLayout.OnTabSelectedListener {
+public class DashboardFragment extends Fragment {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -33,24 +27,13 @@ public class DashboardFragment extends Fragment implements TabLayout.OnTabSelect
         DashboardFragmentAdapter dashboardFragmentAdapter =
                 new DashboardFragmentAdapter(getChildFragmentManager(), tabLayout.getTabCount());
 
+
+//        tabLayout.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         viewPager.setAdapter(dashboardFragmentAdapter);
-        tabLayout.addOnTabSelectedListener(this);
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
 
         return rootView;
     }
 
-    @Override
-    public void onTabSelected(TabLayout.Tab tab) {
-        viewPager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabUnselected(TabLayout.Tab tab) {
-
-    }
-
-    @Override
-    public void onTabReselected(TabLayout.Tab tab) {
-
-    }
 }

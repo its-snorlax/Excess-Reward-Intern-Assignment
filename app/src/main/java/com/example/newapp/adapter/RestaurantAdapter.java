@@ -46,7 +46,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
             holder.isOpenView.setTextColor(context.getResources().getColor(R.color.red));
             holder.isOpenView.setText("Closed Now");
         }
-        holder.distanceFromYouView.setText(currentListItem.getDistanceFromYou() + " from you");
+        holder.distanceFromYouView.setText(currentListItem.getDistanceFromYou() + " Km from you");
         holder.priceView.setText(currentListItem.getPrice() + " $");
     }
 

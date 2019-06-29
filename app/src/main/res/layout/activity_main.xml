@@ -10,7 +10,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginLeft="15dp"
             android:fitsSystemWindows="true"
             android:layout_marginRight="15dp"
@@ -19,15 +18,15 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:text="Food and Beverage"/>
         <Spinner
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="25dp"
                 android:background="@drawable/ic_drop_down"/>
 
-        <ImageView android:layout_width="40dp"
-                   android:layout_height="40dp"
+        <ImageView android:layout_width="25dp"
+                   android:layout_height="25dp"
                    android:src="@drawable/ic_user_profile"
                    android:layout_gravity="end"
                    android:background="@drawable/circle"/>
@@ -35,9 +34,9 @@
         <ImageView
                 android:src="@drawable/ic_maps"
                 android:layout_gravity="end"
-                android:layout_width="40dp"
                 android:layout_marginEnd="15dp"
-                android:layout_height="40dp"/>
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -50,6 +49,7 @@
             android:layout_height="wrap_content">
     </com.google.android.material.tabs.TabLayout>
     <View
+            android:id="@+id/shadow"
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_above="@+id/top_tab_layout"
@@ -57,7 +57,7 @@
 
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager"
-            android:layout_above="@+id/top_tab_layout"
+            android:layout_above="@+id/shadow"
             android:layout_below="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

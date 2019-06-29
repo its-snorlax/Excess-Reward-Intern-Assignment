@@ -40,24 +40,25 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <com.google.android.material.tabs.TabLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
             app:tabIndicatorHeight="0dp"
-            android:elevation="10dp"
-            android:id="@+id/top_tab_layout"
+            android:id="@+id/bottom_navigation_view_main"
             android:layout_width="match_parent"
+            app:menu="@menu/bottom_navigation_menu"
             android:layout_alignParentBottom="true"
+            app:labelVisibilityMode="unlabeled"
             android:layout_height="wrap_content">
-    </com.google.android.material.tabs.TabLayout>
-    <View
-            android:id="@+id/shadow"
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:layout_above="@+id/top_tab_layout"
-            android:background="@drawable/toolbar_dropshadow" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+    <!--<View-->
+            <!--android:id="@+id/shadow"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="5dp"-->
+            <!--android:layout_above="@+id/bottom_navigation_view_main"-->
+            <!--android:background="@drawable/toolbar_dropshadow" />-->
 
-    <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_above="@+id/shadow"
+    <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_above="@+id/bottom_navigation_view_main"
             android:layout_below="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

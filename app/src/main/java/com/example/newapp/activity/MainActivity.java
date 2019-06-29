@@ -1,17 +1,22 @@
 package com.example.newapp.activity;
 
-import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.FrameLayout;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import com.example.newapp.R;
-import com.example.newapp.adapter.FragmentAdapter;
-import com.google.android.material.tabs.TabLayout;
+import com.example.newapp.fragments.DashboardFragment;
+import com.example.newapp.fragments.ListFragment;
+import com.example.newapp.fragments.NotificationFragment;
+import com.example.newapp.fragments.StoreFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener{
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+public class MainActivity extends AppCompatActivity {
+    private BottomNavigationView bottomNavigationView;
+    private FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,38 +24,42 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().hide();
-        tabLayout = findViewById(R.id.top_tab_layout);
-        viewPager = findViewById(R.id.viewpager);
+        bottomNavigationView = findViewById(R.id.bottom_navigation_view_main);
+        frameLayout = findViewById(R.id.frame_layout);
 
+        loadFragment(new DashboardFragment());
 
-        TabLayout.Tab dashboardTab = tabLayout.newTab().setIcon(R.drawable.ic_dashboard);
-        dashboardTab.getIcon().setColorFilter(getResources().getColor(R.color.tabSelected),PorterDuff.Mode.SRC_IN);
-        tabLayout.addTab(dashboardTab);
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_store));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_notification));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_list));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(fragmentAdapter);
-        tabLayout.addOnTabSelectedListener(this);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Fragment fragment;
+                switch (menuItem.getItemId()) {
+                    case R.id.navigation_dashboard:
+                        fragment = new DashboardFragment();
+                        loadFragment(fragment);
+                        return true;
+                    case R.id.navigation_store:
+                        fragment = new StoreFragment();
+                        loadFragment(fragment);
+                        return true;
+                    case R.id.navigation_notification:
+                        fragment = new NotificationFragment();
+                        loadFragment(fragment);
+                        return true;
+                    case R.id.navigation_list:
+                        fragment = new ListFragment();
+                        loadFragment(fragment);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
-    @Override
-    public void onTabSelected(TabLayout.Tab tab) {
-        int color = ContextCompat.getColor(getApplicationContext(), R.color.tabSelected);
-        tab.getIcon().setColorFilter(color, PorterDuff.Mode.SRC_IN);
-        viewPager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabUnselected(TabLayout.Tab tab) {
-        int tabIconColor = ContextCompat.getColor(getApplicationContext(), R.color.tabUnSelected);
-        tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
-    }
-
-    @Override
-    public void onTabReselected(TabLayout.Tab tab) {
-
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

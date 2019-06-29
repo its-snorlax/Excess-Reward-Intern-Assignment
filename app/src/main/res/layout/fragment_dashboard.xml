@@ -5,13 +5,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <com.google.android.material.tabs.TabLayout
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
             android:id="@+id/tab_layout_dashboard"
-            android:layout_width="match_parent"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+            style="@style/ChipTabLayout"
             app:tabSelectedTextColor="@color/dark_blue"
             android:background="#FFFFFF"
             android:elevation="4dp"
             app:tabIndicatorHeight="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <com.google.android.material.tabs.TabItem
                 android:text="Restaurant"

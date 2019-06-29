@@ -4,7 +4,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+    <RelativeLayout
+            android:id="@+id/buttons"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#FFFFFF"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <Button
+                android:id="@+id/filter_button"
+                android:drawableRight="@drawable/ic_filter"
+                android:text="Button"
+                android:drawablePadding="15dp"
+                android:textColor="#CCCCCC"
+                android:background="#FFFFFF"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <Button
+                android:id="@+id/sort_button"
+                android:drawablePadding="15dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:drawableRight="@drawable/ic_sort"
+                android:text="Button"
+                android:layout_toEndOf="@+id/filter_button"
+                android:textColor="#CCCCCC"
+                android:background="#FFFFFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+            android:layout_below="@id/buttons"
             android:id="@+id/recycle_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
